@@ -30,6 +30,7 @@ export default function App() {
           onToggleItem={handleToggleItem}
         />
         <Stats />
+        <div className="bg"></div>
       </div>
     </div>
   );
@@ -72,7 +73,7 @@ function Form({ onAddItem }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Add</button>
+        <button type="submit">Добавить</button>
       </div>
     </form>
   );
