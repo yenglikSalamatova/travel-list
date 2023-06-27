@@ -18,6 +18,12 @@ export default function App() {
       )
     );
   }
+  function handleClearItems() {
+    const confirm = window.confirm("Вы точно хотите очистить список?");
+    if (confirm) {
+      setItems([]);
+    }
+  }
 
   return (
     <div className="container">
@@ -28,6 +34,7 @@ export default function App() {
           items={items}
           onDeleteItem={handleDeleteItem}
           onToggleItem={handleToggleItem}
+          onClearItems={handleClearItems}
         />
         <Stats items={items} />
         <div className="bg"></div>
@@ -79,7 +86,7 @@ function Form({ onAddItem }) {
   );
 }
 
-function PackingList({ items, onDeleteItem, onToggleItem }) {
+function PackingList({ items, onDeleteItem, onToggleItem, onClearItems }) {
   const [sortBy, setSortBy] = useState("input");
 
   let sortedItems;
@@ -114,6 +121,7 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
           <option value="description">Сортировать по алфавиту</option>
           <option value="packed">Сортировать по упакованности</option>
         </select>
+        <button onClick={onClearItems}>Очистить список</button>
       </div>
     </div>
   );
